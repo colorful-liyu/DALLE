@@ -53,7 +53,7 @@ parser.add_argument(
     help = 'Comma separated list of WebDataset (1) image and (2) text column names. Must contain 2 values, e.g. img,cap.'
 )
 
-parser.add_argument('--truncate_captions', dest='truncate_captions', action='store_true',
+parser.add_argument('--truncate_captions', dest='truncate_captions', default = True, action='store_true',
                     help='Captions passed in which exceed the max token length will be truncated if this is set.')
 
 parser.add_argument('--random_resize_crop_lower_ratio', dest='resize_ratio', type=float, default=0.75,
@@ -93,9 +93,9 @@ train_group = parser.add_argument_group('Training settings')
 
 train_group.add_argument('--flops_profiler', dest = 'flops_profiler', action='store_true', help = 'Exits after printing detailed flops/runtime analysis of forward/backward')
 
-train_group.add_argument('--epochs', default = 20, type = int, help = 'Number of epochs')
+train_group.add_argument('--epochs', default = 200, type = int, help = 'Number of epochs')
 
-train_group.add_argument('--save_every_n_steps', default = 1000, type = int, help = 'Save a checkpoint every n steps')
+train_group.add_argument('--save_every_n_steps', default = 10000, type = int, help = 'Save a checkpoint every n steps')
 
 train_group.add_argument('--keep_n_checkpoints', default = None, type = int, help = '(Careful) Deletes old deepspeed checkpoints if there are more than n')
 
